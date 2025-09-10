@@ -161,23 +161,22 @@
   </div>
 
   <script>
-    // Year footer
-    document.getElementById('yr').textContent = new Date().getFullYear();
-
+  document.addEventListener("DOMContentLoaded", function() {
     // Stripe Payment Link
-    const STRIPE_LINK = "https://buy.stripe.com/9B6bJ1dTk5YRbJy1ho0ZW00"; // <-- replace with your Stripe Payment Link
+    const STRIPE_LINK = "https://buy.stripe.com/96b6bJ1dTk5YRbJyho0zW00"; // your link
 
-    // Guard against double-clicks and always open in same tab
     const buyBtn = document.getElementById('buy');
     buyBtn.addEventListener('click', function () {
-      if (!STRIPE_LINK || STRIPE_LINK.includes("YOUR_STRIPE_PAYMENT_LINK")) {
+      if (!STRIPE_LINK) {
         alert("Stripe link missing. Please add your Payment Link URL in the page source.");
         return;
       }
+
       buyBtn.disabled = true;
       window.location.href = STRIPE_LINK;
-      setTimeout(()=> buyBtn.disabled=false, 4000);
-    }, { passive:true });
-  </script>
+      setTimeout(() => buyBtn.disabled = false, 4000);
+    });
+  });
+</script>
 </body>
 </html>
